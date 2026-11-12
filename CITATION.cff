@@ -5,7 +5,7 @@ title: "COMPASS"
 # CONFIRM: bump the version and tag a new GitHub release, because the rename changed
 # package paths, environment variables, column names and CLI flags (breaking changes).
 # Use the same number and date in the paper: C1, S1, S2 in the metadata tables.
-version: 0.3.0
+version: 0.3.1
 date-released: 2026-11-12
 authors:
   - family-names: "Ojha"

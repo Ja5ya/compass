@@ -56,4 +56,4 @@ Do **not** commit machine-specific env files. Use the templates:
 - [x] Local env files excluded; only `configs/env.*.example` shipped
 - [x] Absolute `/home/...` paths removed from published configs
 - [x] Public GitHub: https://github.com/Ja5ya/compass
-- [ ] GitHub Release tag `v0.3.0` (for SoftwareX S2)
+- [ ] GitHub Release tag `v0.3.1` (for SoftwareX S2)

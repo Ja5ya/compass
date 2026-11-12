@@ -39,7 +39,7 @@ and a license file. This repository is that software tree.
 ## Remaining author actions
 
 1. Keep GitHub URLs in sync in `CITATION.cff` and `README.md` (already set to `Ja5ya/compass`).
-2. Tag and publish GitHub Release **`v0.3.0`** (SoftwareX S2 metadata).
+2. Tag and publish GitHub Release **`v0.3.1`** (SoftwareX S2 metadata).
 3. Point manuscript C2 / C7 / S2 at this repo (see SoftwareX `main.tex`).
 
 ## Quick validation (no data required)

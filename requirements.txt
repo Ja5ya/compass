@@ -1,4 +1,5 @@
-tensorflow>=2.15,<2.19
+# Companion analysis used TensorFlow 2.20.0 + Keras 3.12.1.
+tensorflow>=2.15,<2.21
 numpy>=1.24,<3
 pandas>=2.0
 scikit-learn>=1.3
