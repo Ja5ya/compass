@@ -1,0 +1,44 @@
+{
+  "psych_code": "DEMO",
+  "binding": {
+    "K_S": 0.2,
+    "K_A": 0.55,
+    "result": {
+      "fP_star": 0.8632705427326229,
+      "fS_star": 0.35236808921143836,
+      "fA_star": 0.6,
+      "lambda_S": 0.0,
+      "lambda_A": 0.9681713537418453,
+      "delta_S": 0.12782240579623638,
+      "delta_A": 0.07500000000000007,
+      "slack_S": 0.15236808921143835,
+      "slack_A": 0.04999999999999993,
+      "n_feasible": 2,
+      "n_feas_S": 1,
+      "n_feas_A": 1,
+      "reliable_S": false,
+      "reliable_A": false
+    }
+  },
+  "cliff": {
+    "K_S": 0.2,
+    "K_A": 0.7,
+    "result": {
+      "fP_star": 0.7906576912019845,
+      "fS_star": 0.25437004014096654,
+      "fA_star": 0.7200000000000001,
+      "lambda_S": null,
+      "lambda_A": null,
+      "delta_S": 0.12782240579623638,
+      "delta_A": 0.07500000000000007,
+      "slack_S": 0.054370040140966525,
+      "slack_A": 0.02000000000000013,
+      "n_feasible": 1,
+      "n_feas_S": 0,
+      "n_feas_A": 0,
+      "reliable_S": false,
+      "reliable_A": false
+    }
+  },
+  "note": "Inputs are fabricated by make_synthetic.py; metrics are not empirical ECG results. lambda_S/lambda_A are JSON null when the finite difference is undefined (cliff)."
+}

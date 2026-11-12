@@ -1,0 +1,65 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "COMPASS"
+# CONFIRM: bump the version and tag a new GitHub release, because the rename changed
+# package paths, environment variables, column names and CLI flags (breaking changes).
+# Use the same number and date in the paper: C1, S1, S2 in the metadata tables.
+version: 0.3.0
+date-released: 2026-11-12
+authors:
+  - family-names: "Ojha"
+    given-names: "Jaya"
+    email: "Jaya.Ojha@kristiania.no"
+    orcid: "https://orcid.org/0009-0004-1148-3789"
+    affiliation: "Kristiania University of Applied Sciences"
+  - family-names: "El-Ganainy"
+    given-names: "Noha"
+    email: "Noha.El-Ganainy@kristiania.no"
+    orcid: "https://orcid.org/0000-0002-1004-837X"
+    affiliation: "Kristiania University of Applied Sciences"
+  - family-names: "Soylu"
+    given-names: "Ahmet"
+    email: "Ahmet.Soylu@kristiania.no"
+    orcid: "https://orcid.org/0000-0001-6034-4137"
+    affiliation: "Kristiania University of Applied Sciences; Seoul National University"
+  - family-names: "Yazidi"
+    given-names: "Anis"
+    email: "anisy@ifi.uio.no"
+    orcid: "https://orcid.org/0000-0001-7591-1659"
+    affiliation: "University of Oslo; Simula Research Laboratory"
+  - family-names: "Lind"
+    given-names: "Pedro G."
+    email: "Pedro.Lind@kristiania.no"
+    orcid: "https://orcid.org/0000-0002-8176-666X"
+    affiliation: "Kristiania University of Applied Sciences"
+license: MIT
+repository-code: "https://github.com/Ja5ya/compass"
+url: "https://github.com/Ja5ya/compass"
+keywords:
+  - model selection
+  - trustworthy AI
+  - explainability
+  - constrained optimisation
+  - electrocardiography
+  - reproducibility
+abstract: >
+  COMPASS (constrained objective multi-criteria performance, accountability,
+  stability and saliency) is an open-source Python tool for choosing among
+  trained models on more than predictive accuracy. It scores every candidate
+  on performance (f_P), stability (f_S) and accountability (f_A), and selects
+  the best-performing configuration that meets user-set minimum thresholds on
+  stability and accountability. Shadow prices report the performance cost of
+  each tighter threshold. The selection core is modality-agnostic. A bundled
+  ECG use case covers cohort handling, a hyperparameter sweep, and saliency
+  scoring.
+# Once the SoftwareX article is accepted, uncomment and fill in, so that
+# "Cite this repository" on GitHub points to the paper:
+# preferred-citation:
+#   type: article
+#   title: "COMPASS: A tool to guide trustworthy model selection"
+#   journal: "SoftwareX"
+#   year: 2026
+#   volume:
+#   doi:
+#   authors: (same five authors as above)

@@ -1,0 +1,58 @@
+# Synthetic laptop demo for COMPASS core (stages 4–5).
+# No ECG waveforms, TensorFlow, GPU or PhysioNet/Kaggle download.
+#
+#   bash examples/synthetic/run.sh
+#
+# Artefacts are written under COMPASS_DATA_ROOT (set by run.sh).
+
+name: synthetic_demo
+
+data:
+  mode: build   # analysis-only; make_synthetic.py writes the Layer-2 tables
+
+ecg:
+  n_leads: 12
+  signal_len: 128
+
+diagnoses:
+  codes:
+    - DEMO
+
+demographic_matching:
+  age_tolerance: 5
+  match_gender: false
+  match_age: false
+  random_state: 42
+
+# 1 code × 1 arch × 2 lr × 3 dropout = 6 synthetic configurations
+training:
+  architectures: [st_cnn]
+  learning_rates: [1.0e-4, 5.0e-4]
+  dropout_rates: [0.1, 0.3, 0.5]
+  batch_size: 32
+  epochs: 1
+  random_state: 42
+  threshold: 0.5
+
+xai:
+  n_samples: 40
+  shap_bg: 10
+  default_best:
+    arch: st_cnn
+    lr: "1e-4"
+    dr: "0.1"
+  best_configs: {}
+
+objectives:
+  f_P:
+    metrics: [test_acc_mean, test_precision_mean, test_recall_mean, test_specificity_mean]
+    normalize: per_task_minmax
+  f_S:
+    method: inv_std
+  f_A:
+    components: [continuity_valid, compactness_valid, contrastivity_valid]
+
+analysis:
+  task_column: psych_code
+  recall_min: 0.30
+  recall_metric: test_recall_mean

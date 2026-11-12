@@ -1,0 +1,5 @@
+# Minimal deps for the synthetic COMPASS core demo (no TensorFlow).
+numpy>=1.24,<3
+pandas>=2.0
+scikit-learn>=1.3
+PyYAML>=6.0
