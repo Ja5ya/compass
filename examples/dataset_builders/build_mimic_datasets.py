@@ -3,8 +3,7 @@
 MIMIC-IV ECG dataset builder (Layer 1, optional).
 
 Builds recs_psych.pkl + recs_normal.pkl per ICD-10 F* code from MIMIC-IV-ECG
-WFDB waveforms and ICD extension labels. Copied into this repository for
-SoftwareX self-containment; the parent NeurIPS repo is not required at runtime.
+WFDB waveforms and ICD extension labels. 
 
 Usage:
   source configs/env.mimic_build.example   # edit paths first
