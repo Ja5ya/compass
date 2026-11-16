@@ -10,8 +10,4 @@ This document is a short pointer. Full documentation lives in:
 
 Architecture figure (repository root): [`mof_architecture.png`](../mof_architecture.png)
 
-- **Teal** — fixed Lagrangian core  
-- **Amber** — configurable \(f_P\), \(f_S\), \(f_A\)  
-- **Gray** — swappable dataset / ECG use case  
 
-Regenerate with `python scripts/make_figure.py` if you edit the figure script.

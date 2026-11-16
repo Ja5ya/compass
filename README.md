@@ -92,8 +92,6 @@ No patient data are distributed with this repository.
 
 ![COMPASS three-layer architecture](figure1_compass_architecture.png)
 
-Teal: fixed selection core. Amber: user-configurable $f_P$, $f_S$, $f_A$. Gray:
-swappable dataset and ECG use-case layers. Regenerate with `python scripts/make_figure.py`.
 
 ---
 

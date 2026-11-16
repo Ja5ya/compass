@@ -1,8 +1,10 @@
 # Data contract between external dataset builders and the COMPASS pipeline
 
-COMPASS is **modality-agnostic at the core**. Users
-prepare datasets externally, then run modality-specific analysis (ECG in this
-repository), then apply COMPASS scoring and frontier analysis on standard artifacts.
+The COMPASS core works on standard artefacts and does not read signals. 
+Only the ECG use case is implemented and tested in this repository; 
+use with other data types has not been evaluated. Users prepare datasets externally, 
+then run modality-specific analysis (ECG in this repository), 
+then apply COMPASS scoring and frontier analysis on standard artefacts.
 
 ## Three layers
 

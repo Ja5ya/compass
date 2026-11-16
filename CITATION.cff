@@ -2,9 +2,6 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "COMPASS"
-# CONFIRM: bump the version and tag a new GitHub release, because the rename changed
-# package paths, environment variables, column names and CLI flags (breaking changes).
-# Use the same number and date in the paper: C1, S1, S2 in the metadata tables.
 version: 0.3.1
 date-released: 2026-11-12
 authors:
@@ -50,9 +47,9 @@ abstract: >
   on performance (f_P), stability (f_S) and accountability (f_A), and selects
   the best-performing configuration that meets user-set minimum thresholds on
   stability and accountability. Shadow prices report the performance cost of
-  each tighter threshold. The selection core is modality-agnostic. A bundled
-  ECG use case covers cohort handling, a hyperparameter sweep, and saliency
-  scoring.
+  each tighter threshold. The selection core works on standard tables and is 
+  separate from the bundled ECG use case, which covers cohort handling, 
+  a hyperparameter sweep, and saliency scoring. Use outside ECG has not been evaluated.
 # Once the SoftwareX article is accepted, uncomment and fill in, so that
 # "Cite this repository" on GitHub points to the paper:
 # preferred-citation:
