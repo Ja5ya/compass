@@ -35,9 +35,10 @@ thresholds, not clinically derived limits.
   tables of measured quantities and does not read waveforms. Its use outside ECG has
   **not** been evaluated.
 - The bundled ECG pipeline (training, saliency scoring) was developed and tested on
-  12-lead recordings of 5,000 samples (10 s at 500 Hz for MIMIC-IV-ECG), with a
-  balanced case-versus-normal design. Other lead counts, lengths or sampling rates
-  need your own preprocessing and have not been tested.
+  12-lead input with balanced two-class tasks. The signal length is set in the
+  configuration (`ecg.signal_len`): 5,000 samples (10 s at 500 Hz) for MIMIC-IV-ECG,
+  and 384 samples for the resampled single beats of the Psychiatry ECG dataset.
+  Other lead counts or sampling rates need your own preprocessing and have not been tested.
 
 ---
 
@@ -92,6 +93,8 @@ No patient data are distributed with this repository.
 
 ![COMPASS three-layer architecture](figure1_compass_architecture.png)
 
+Teal: fixed selection core. Amber: user-configurable $f_P$, $f_S$, $f_A$. Gray:
+swappable dataset and ECG use-case layers. Regenerate with `python scripts/make_figure.py`.
 
 ---
 
