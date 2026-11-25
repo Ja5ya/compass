@@ -29,7 +29,7 @@ from compass_analysis import (  # noqa: E402
 )
 
 # Default operating points chosen for the fabricated DEMO grid:
-#   binding: K_A above the performance-winner's f_A (0.50) so accountability binds;
+#   binding: K_A above the performance-winner's f_A (0.50) so auditability binds;
 #            tightening drops from the f_A=0.60 step to the f_A=0.72 / lower-f_P step
 #   cliff:   K_A just below the unique max f_A (0.72); one adaptive step empties F
 DEFAULT_BINDING = (0.20, 0.55)

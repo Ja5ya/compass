@@ -1,8 +1,8 @@
 Authors
 =======
 
-**COMPASS** (constrained objective multi-criteria performance,
-accountability, stability and saliency) is developed by:
+**COMPASS** (Constrained Objective Multi-criteria with Performance,
+Auditability, Stability and Saliency) is developed by:
 
 - **Jaya Ojha** (corresponding author and maintainer),
   Kristiania University of Applied Sciences, Oslo, Norway.

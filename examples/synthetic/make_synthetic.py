@@ -40,7 +40,7 @@ N_TEST = 80
 # Design intent after scoring (approx.):
 #   lr5e-4_dr0.3  high f_P (~1.0),  mid f_A (0.50)   — performance winner
 #   lr1e-4_dr0.1  mid-high f_P,     f_A 0.60         — staircase step
-#   lr5e-4_dr0.1  lower f_P (~0.8), high f_A (0.72)  — accountability winner
+#   lr5e-4_dr0.1  lower f_P (~0.8), high f_A (0.72)  — auditability winner
 #   others        weaker; one row fails recall_min
 PROFILE: dict[tuple[float, float], dict[str, float]] = {
     (1e-4, 0.1): {
@@ -64,7 +64,7 @@ PROFILE: dict[tuple[float, float], dict[str, float]] = {
         "compac": 0.48,
         "contra": 0.36,  # f_A = 0.42
     },
-    # Highest accountability, deliberately weaker performance (~0.8 after minmax)
+    # Highest auditability, deliberately weaker performance (~0.8 after minmax)
     # Larger margin keeps bootstrap SD (and thus f_S) high enough to stay feasible
     # at the demo's binding K_S.
     (5e-4, 0.1): {
@@ -74,7 +74,7 @@ PROFILE: dict[tuple[float, float], dict[str, float]] = {
         "compac": 0.74,
         "contra": 0.62,  # f_A = 0.72
     },
-    # Best performance, mid accountability — binding trade-off vs row above
+    # Best performance, mid auditability — binding trade-off vs row above
     (5e-4, 0.3): {
         "target_acc": 0.95,
         "margin": 0.32,

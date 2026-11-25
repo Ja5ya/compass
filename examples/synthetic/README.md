@@ -8,7 +8,7 @@ The six sweep runs are **fabricated** by `make_synthetic.py`:
 
 - `test_predictions.npz` / `metrics.json` are **not** from `train_multi_f_array.py`
 - `sweep_fa_DEMO.csv` is **not** from `run_xai.py`
-- Printed recalls / accuracies / \(f_P\) values are **synthetic**, not ECG or clinical results
+- Printed recalls / accuracies / $f_P$ values are **synthetic**, not ECG or clinical results
 
 The demo then runs the **real** `compass_analysis` core on those tables. It validates the artefact contract and the constrained-Lagrangian shell. It does **not** cover training, attribution scoring, or any scientific finding.
 
@@ -17,16 +17,16 @@ The demo then runs the **real** `compass_analysis` core on those tables. It vali
 | Covered | Not covered |
 |---------|-------------|
 | merge-fa, bootstrap, join | `train_multi_f_array.py` |
-| \(f_P\)/\(f_S\)/\(f_A\) scoring | `run_xai.py` |
+| $f_P$/$f_S$/$f_A$ scoring | `run_xai.py` |
 | recall viability filter | TensorFlow / GPU |
-| binding shadow price (\(\lambda_A>0\)) | Real ECG waveforms |
-| cliff (\(\lambda=\infty\)) | PhysioNet / Kaggle download |
+| binding shadow price ($\lambda_A>0$) | Real ECG waveforms |
+| cliff ($\lambda=\infty$) | PhysioNet / Kaggle download |
 | staircase frontier steps | MIMIC / Psychiatry ECG science |
 
 Default operating points on the fabricated DEMO grid:
 
-- **Binding:** \((K_S,K_A)=(0.20,0.55)\) → non-zero \(\lambda_A\)
-- **Cliff:** \((K_S,K_A)=(0.20,0.70)\) → undefined finite difference after one adaptive step (`lambda_A: null` in `shadow_prices.json`; strict JSON, never `Infinity`)
+- **Binding:** $(K_S,K_A)=(0.20,0.55)$ → non-zero $\lambda_A$
+- **Cliff:** $(K_S,K_A)=(0.20,0.70)$ → undefined finite difference after one adaptive step (`lambda_A: null` in `shadow_prices.json`; strict JSON, never `Infinity`)
 
 ## Run
 

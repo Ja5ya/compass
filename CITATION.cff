@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "COMPASS"
-version: 0.3.1
-date-released: 2026-11-12
+version: 0.3.2
+date-released: 2026-11-25
 authors:
   - family-names: "Ojha"
     given-names: "Jaya"
@@ -41,15 +41,15 @@ keywords:
   - electrocardiography
   - reproducibility
 abstract: >
-  COMPASS (constrained objective multi-criteria performance, accountability,
-  stability and saliency) is an open-source Python tool for choosing among
+  COMPASS (Constrained Objective Multi-criteria with Performance, Auditability,
+  Stability and Saliency) is an open-source Python tool for choosing among
   trained models on more than predictive accuracy. It scores every candidate
-  on performance (f_P), stability (f_S) and accountability (f_A), and selects
+  on performance (f_P), stability (f_S) and auditability (f_A), and selects
   the best-performing configuration that meets user-set minimum thresholds on
-  stability and accountability. Shadow prices report the performance cost of
-  each tighter threshold. The selection core works on standard tables and is 
-  separate from the bundled ECG use case, which covers cohort handling, 
-  a hyperparameter sweep, and saliency scoring. Use outside ECG has not been evaluated.
+  stability and auditability. Shadow prices report the performance cost of
+  each tighter threshold. The selection core works on standard tables and is
+  separate from the bundled ECG use case, which covers cohort handling, a
+  hyperparameter sweep, and saliency scoring. Use outside ECG has not been evaluated.
 # Once the SoftwareX article is accepted, uncomment and fill in, so that
 # "Cite this repository" on GitHub points to the paper:
 # preferred-citation:
