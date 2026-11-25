@@ -1,13 +1,13 @@
 # Quick start: custom dataset and custom objectives
 
 This guide walks through using COMPASS with __your own
-dataset__ and __your own definitions__ of \(f_P\), \(f_S\), and \(f_A\). 
+dataset__ and __your own definitions__ of $f_P$, $f_S$, and $f_A$. 
 
 ---
 
 ## What is COMPASS?
 
-COMPASS stands for *constrained objective multi-criteria performance, accountability, stability and saliency*.
+COMPASS stands for *Constrained Objective Multi-criteria with Performance, Auditability, Stability and Saliency*.
 
 When you train many model configurations in a hyperparameter sweep, picking the
 single best accuracy often hides problems: an imprecise performance estimate,
@@ -16,27 +16,27 @@ saliency maps that cannot be inspected, or failure on clinically important metri
 **COMPASS** scores every configuration on three scalar objectives and then runs a
 **fixed constrained-Lagrangian analysis** to answer:
 
-- Which configurations are *feasible* at your chosen stability and accountability thresholds (\(K_S\), \(K_A\))?
+- Which configurations are *feasible* at your chosen stability and auditability thresholds ($K_S$, $K_A$)?
 - What is the best achievable performance on that feasible set?
 - What is the *shadow price* of tightening each constraint?
 
 | Objective | Symbol | What it measures (default ECG) |
 |-----------|--------|-------------------------------|
-| __Performance__ | \(f_P\) | Bootstrap classification metrics (acc, precision, recall, specificity) |
-| __Stability__ | \(f_S\) | Precision of that estimate under test-set resampling (higher = tighter) |
-| __Accountability__ | \(f_A\) | Saliency continuity, compactness and contrastivity |
+| __Performance__ | $f_P$ | Bootstrap classification metrics (acc, precision, recall, specificity) |
+| __Stability__ | $f_S$ | Precision of that estimate under test-set resampling (higher = tighter) |
+| __Auditability__ | $f_A$ | Saliency continuity, compactness and contrastivity |
 
-__You define__ how \(f_P\), \(f_S\), \(f_A\) are computed (YAML, pandas, or custom CSVs).
+__You define__ how $f_P$, $f_S$, $f_A$ are computed (YAML, pandas, or custom CSVs).
 __COMPASS fixes__ the Lagrangian frontier and shadow-price machinery in `compass_analysis.py`.
 
 ### What you get at the end
 
 | Output | Where | Purpose |
 |--------|-------|---------|
-| `analysis/three_objective_dataset.csv` | `COMPASS_DATA_ROOT` | Joined \(f_P, f_S, f_A\) per sweep config |
-| Feasibility frontier plot | `notebooks/02_feasibility_frontier.ipynb` | Trade-off between stability and accountability thresholds |
-| Shadow prices | same notebook | Cost of tightening \(f_S\) or \(f_A\) constraints in \(f_P\) |
-| Recommended config | same notebook | Best \(f_P\) on the feasible set for your task |
+| `analysis/three_objective_dataset.csv` | `COMPASS_DATA_ROOT` | Joined $f_P, f_S, f_A$ per sweep config |
+| Feasibility frontier plot | `notebooks/02_feasibility_frontier.ipynb` | Trade-off between stability and auditability thresholds |
+| Shadow prices | same notebook | Cost of tightening $f_S$ or $f_A$ constraints in $f_P$ |
+| Recommended config | same notebook | Best $f_P$ on the feasible set for your task |
 
 ### Colour key (architecture figure)
 
@@ -213,9 +213,9 @@ changing objectives. Re-run bootstrap only if f_P/f_S _input columns_ changed.
 
 | Objective | YAML keys | Input columns (default ECG) |
 |-----------|-----------|----------------------------|
-| \(f_P\) | `objectives.f_P.metrics`, `.weights`, `.normalize` | `test_*_mean` from bootstrap |
-| \(f_S\) | `objectives.f_S.method`, `.metrics` | `test_*_std` from bootstrap |
-| \(f_A\) | `objectives.f_A.components`, `.weights` | XAI component columns |
+| $f_P$ | `objectives.f_P.metrics`, `.weights`, `.normalize` | `test_*_mean` from bootstrap |
+| $f_S$ | `objectives.f_S.method`, `.metrics` | `test_*_std` from bootstrap |
+| $f_A$ | `objectives.f_A.components`, `.weights` | XAI component columns |
 
 ---
 
@@ -312,5 +312,4 @@ Training and XAI scripts are not required at this level.
 |----------|----------|
 | [DATA_CONTRACT.md](DATA_CONTRACT.md) | Pickle and artefact schemas, config reference |
 | [REPOSITORY_SCOPE.md](REPOSITORY_SCOPE.md) | What is in-repo vs user-supplied |
-| [SOFTWAREX_CHECKLIST.md](SOFTWAREX_CHECKLIST.md) | GitHub / SoftwareX readiness |
 | [README.md](../README.md) | Install, Slurm reference run, environment variables |

@@ -26,7 +26,7 @@ YAML study configs (`configs/dataset.template.yaml` is the starting point):
 | `ecg.*` | Lead count and signal length |
 | `diagnoses.codes` | Task labels (e.g. ICD-10 codes, `SCZ`, …) |
 | `training.*` | Sweep grid (architectures, learning rates, dropout) |
-| `objectives.*` | \(f_P\), \(f_S\), \(f_A\) formulas (column lists + weights) |
+| `objectives.*` | $f_P$, $f_S$, $f_A$ formulas (column lists + weights) |
 | `analysis.*` | Task column alias (`task_id`), recall filter for frontier dataset |
 
 Example configs: `configs/mimic_f329.yaml`, `configs/ecgpsych.yaml`, `configs/dataset.template.yaml`.
@@ -95,12 +95,12 @@ Per hyperparameter config (`hyper_sweep/<task>/<arch>/lr*_dr*/`):
 
 | File | Contents | Used for |
 |------|----------|----------|
-| `hyper_sweep/bootstrap_results.csv` | Bootstrap mean/std per metric | \(f_P\), \(f_S\) inputs |
-| `xai_results/hyper_sweep_fa/sweep_fa_<task>.csv` | Saliency component scores | \(f_A\) inputs |
-| `analysis/objective_inputs.csv` | Joined bootstrap + **all** saliency columns (`f_A`, `*_valid`, per-method, diagnostics) before \(f_P\)/\(f_S\) scoring | Custom formulas / reweighting |
-| `analysis/three_objective_dataset.csv` | Joined + default \(f_P,f_S,f_A\) | Frontier notebooks |
+| `hyper_sweep/bootstrap_results.csv` | Bootstrap mean/std per metric | $f_P$, $f_S$ inputs |
+| `xai_results/hyper_sweep_fa/sweep_fa_<task>.csv` | Saliency component scores | $f_A$ inputs |
+| `analysis/objective_inputs.csv` | Joined bootstrap + **all** saliency columns (`f_A`, `*_valid`, per-method, diagnostics) before $f_P$/$f_S$ scoring | Custom formulas / reweighting |
+| `analysis/three_objective_dataset.csv` | Joined + default $f_P,f_S,f_A$ | Frontier notebooks |
 
-### Saliency / \(f_A\) columns and exclusion rules
+### Saliency / $f_A$ columns and exclusion rules
 
 Primary columns in `sweep_fa_<task>.csv` (and the merged `sweep_fa_summary.csv`):
 
@@ -114,11 +114,11 @@ Primary columns in `sweep_fa_<task>.csv` (and the merged `sweep_fa_summary.csv`)
 
 **Degenerate SHAP.** A SHAP attribution is treated as degenerate when its raw
 maximum absolute value is below `0.001` (`SHAP_DEGEN_MAX` in `run_xai.py`).
-Degenerate samples are dropped from **all** \(f_A\) components before pooling.
+Degenerate samples are dropped from **all** $f_A$ components before pooling.
 
 **LIME and compactness.** LIME attributions are retained for continuity and
 contrastivity but excluded from compactness because the fixed 200-segment
-structure yields a near-constant compactness (\(\approx 0.525\)) across codes.
+structure yields a near-constant compactness ($\approx 0.525$) across codes.
 The per-config diagnostic column is `compactness_lime_ref`.
 
 ### Custom objective formulas
@@ -134,12 +134,12 @@ See [Objective extension levels](#objective-extension-levels) below and
 ## Objective extension levels
 
 The COMPASS core separates a **fixed Lagrangian frontier shell** from **user-defined
-scalar objectives** \(f_P\), \(f_S\), \(f_A\). Three extension levels are supported:
+scalar objectives** $f_P$, $f_S$, $f_A$. Three extension levels are supported:
 
 ### Level 1 — Edit YAML (no code)
 
 Configure weighted combinations of existing artifact columns under `objectives:` in
-your study YAML. Example — recall-only performance and continuity-heavy accountability.
+your study YAML. Example — recall-only performance and continuity-heavy auditability.
 
 ```yaml
 objectives:

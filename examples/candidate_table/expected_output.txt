@@ -1,0 +1,5 @@
+Candidates: 8  |  Feasible at (K_S=0.65, K_A=0.54): 5
+Selected model: B  (f_P=0.9, f_S=0.7, f_A=0.55)
+Note: f_A is auditability (continuity, compactness, contrastivity of attribution maps); it does not establish faithfulness.
+Shadow prices: λ_S=1.8  λ_A=6.92308  δ_A=0.013  n_feas=5
+Feasibility frontier: 40 staircase points (grid size 40; fabricated table only).

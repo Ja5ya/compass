@@ -1,4 +1,4 @@
-"""COMPASS core: modality-agnostic multi-objective analysis on pipeline artifacts."""
+"""COMPASS core: multi-objective analysis of pipeline artefacts in a standard table format (evaluated on ECG only)."""
 
 from compass.contracts import RECORD_REQUIRED_KEYS, validate_record, validate_dataset_layout
 from compass.objectives import (

@@ -8,6 +8,4 @@ This document is a short pointer. Full documentation lives in:
 | [DATA_CONTRACT.md](DATA_CONTRACT.md) | Pickle / CSV schemas, config reference, extension levels |
 | [../README.md](../README.md) | Install, Slurm reference run, embedded architecture figure |
 
-Architecture figure (repository root): [`mof_architecture.png`](../mof_architecture.png)
-
-
+Architecture figure (repository root): [`figure1_compass_architecture.png`](../figure1_compass_architecture.png)
