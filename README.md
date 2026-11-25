@@ -1,11 +1,11 @@
 # COMPASS
 
-**Constrained objective multi-criteria performance, accountability, stability and saliency.**
+**Constrained Objective Multi-criteria with Performance, Auditability, Stability and Saliency.**
 
 COMPASS helps you choose among trained models on more than predictive accuracy.
 It scores every candidate configuration on performance ($f_P$), stability ($f_S$)
-and accountability ($f_A$), then selects the best-performing configuration that
-meets user-defined minimum levels of stability and accountability ($K_S$, $K_A$).
+and auditability ($f_A$), then selects the best-performing configuration that
+meets user-defined minimum levels of stability and auditability ($K_S$, $K_A$).
 It also estimates how much performance each stricter threshold costs, and maps the
 threshold combinations for which no candidate is feasible. You can replace the three
 scores; the constrained selection step is fixed.
@@ -14,12 +14,14 @@ scores; the constrained selection step is fixed.
 |-----------|--------|-------------------------------------------|
 | Performance | $f_P$ | Mean of bootstrap accuracy, precision, recall and specificity, min-max normalised within each task |
 | Stability | $f_S$ | One minus the min-max normalised mean bootstrap standard deviation of the same four metrics (higher = more precise estimate) |
-| Accountability | $f_A$ | Equal mean of saliency continuity, compactness and contrastivity |
+| Auditability | $f_A$ | Equal mean of saliency continuity, compactness and contrastivity, each between 0 and 1; not rescaled |
 
 **What the scores mean, and what they do not.** The defaults are proxies for
 trustworthiness, not clinical validation, and $K_S$ and $K_A$ are user-defined
 thresholds, not clinically derived limits.
 
+- $f_P$ and $f_S$ are normalised within each task, so $K_S$ is relative to the candidates
+  of that task. $f_A$ is not rescaled, so $K_A$ is an absolute level on a scale from 0 to 1.
 - $f_S$ is *evaluation stability*: how much the performance estimate varies when the test
   set is resampled. It is not model robustness, stability across retraining or seeds,
   or stability under distribution shift.
@@ -73,6 +75,20 @@ so all printed metrics are synthetic. The demo covers the join and constrained
 selection core, including a binding constraint and a cliff. It does **not** cover model
 training or attribution scoring. Details: [examples/synthetic/README.md](examples/synthetic/README.md).
 
+### Your own candidate table (no pipeline)
+
+Already have a table with one row per candidate model? Apply the selection core to it
+directly: scoring, constrained selection, shadow prices and feasibility frontier, with
+the same four packages as the demo.
+
+```bash
+python examples/candidate_table/run_candidate_table.py
+```
+
+The input is `examples/candidate_table/candidates.csv` (eight fabricated candidates) and the
+expected output is in `examples/candidate_table/expected_output.txt`. Details:
+[examples/candidate_table/README.md](examples/candidate_table/README.md).
+
 Full ECG runs with MIMIC-IV-ECG (credentialed labels) or the open
 [Psychiatry ECG](https://www.kaggle.com/datasets/buraktaci/psychiatry-ecg) dataset are
 optional. They need TensorFlow and, for a useful sweep, a GPU or a Slurm cluster.
@@ -85,6 +101,7 @@ No patient data are distributed with this repository.
 | Document | When to read it |
 |----------|-----------------|
 | [examples/synthetic/](examples/synthetic/) | Data-free demo of the selection core |
+| [examples/candidate_table/](examples/candidate_table/) | Selection core on your own candidate table, with expected output |
 | [docs/QUICKSTART_CUSTOM_STUDY.md](docs/QUICKSTART_CUSTOM_STUDY.md) | New dataset, custom $f_P$, $f_S$, $f_A$, full walkthrough |
 | [docs/DATA_CONTRACT.md](docs/DATA_CONTRACT.md) | Pickle and CSV schemas, configuration reference, objective extension levels |
 | [docs/REPOSITORY_SCOPE.md](docs/REPOSITORY_SCOPE.md) | What is in this repository and what users supply |
@@ -94,7 +111,7 @@ No patient data are distributed with this repository.
 ![COMPASS three-layer architecture](figure1_compass_architecture.png)
 
 Teal: fixed selection core. Amber: user-configurable $f_P$, $f_S$, $f_A$. Gray:
-swappable dataset and ECG use-case layers. Regenerate with `python scripts/make_figure.py`.
+swappable dataset and ECG use-case layers.
 
 ---
 
@@ -189,6 +206,8 @@ Edit `objectives:` and `analysis:` in your study YAML, or post-process
 CSVs) are described in
 [docs/DATA_CONTRACT.md](docs/DATA_CONTRACT.md#objective-extension-levels), and a
 walkthrough is in [docs/QUICKSTART_CUSTOM_STUDY.md](docs/QUICKSTART_CUSTOM_STUDY.md).
+For a minimal worked case that starts from a plain table, see
+[examples/candidate_table/](examples/candidate_table/).
 
 ---
 
